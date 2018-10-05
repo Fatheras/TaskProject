@@ -1,6 +1,24 @@
 
 export default class UserService {
-    static getUser() {
-        return "This user";
+    
+    public static getAllUsers() {
+        
     }
+    
+    public static getUser() {
+       
+    }
+
+    public static addUser() {
+
+    }
+
+    public static deleteUser() {
+
+    }
+
+    public static updateUser() {
+
+    }
+
 }

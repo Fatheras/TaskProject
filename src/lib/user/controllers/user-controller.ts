@@ -3,10 +3,24 @@ import UserService from '../services/user-service';
 
 export class UserController {
 
-    static getUser(req, res) {
-        let user = UserService.getUser();
+    public static getAllUsers(req, res) {
+        
+    }
 
-        res.send(user);
+    public static getUser(req, res) {
+        
+    }
+
+    public static addUser(req, res) {
+        
+    }
+
+    public static deleteUser(req, res) {
+
+    }
+
+    public static updateUser(req, res) {
+
     }
     
 }

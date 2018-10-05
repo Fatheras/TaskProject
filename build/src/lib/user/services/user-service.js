@@ -1,8 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class UserService {
+    static getAllUsers() {
+    }
     static getUser() {
-        return "This user";
+    }
+    static addUser() {
+    }
+    static deleteUser() {
+    }
+    static updateUser() {
     }
 }
 exports.default = UserService;
