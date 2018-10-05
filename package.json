@@ -15,6 +15,7 @@
   },
   "devDependencies": {
     "@types/node": "^10.11.4",
-    "nodemon": "^1.18.4"
+    "nodemon": "^1.18.4",
+    "typescript": "^3.1.1"
   }
 }
