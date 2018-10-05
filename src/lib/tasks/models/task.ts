@@ -1,13 +1,25 @@
-import Sequelize from 'sequelize';
-import db from '../../db/models/db';
+import Sequelize from "sequelize";
+import db from "../../db/models/db";
 
-const User = db.define('user', {
+export interface ITask extends  Sequelize.Model<ITask>  {
+    name: string;
+    cost: number;
+    status: string;
+    category: string;
+    time: string;
+    description: string;
+    owner: number;
+    createdAt: string;
+    updatedAt: string;
+}
+
+export const Task = db.define<ITask>("task", {
     name: {
         type: Sequelize.STRING,
         validate: {
             notEmpty: true,
             len: [3, 30],
-        }
+        },
     },
     cost: {
         type: Sequelize.INTEGER,
@@ -17,7 +29,7 @@ const User = db.define('user', {
         validate: {
             notEmpty: true,
             len: [4, 15],
-        }
+        },
     },
     category: {
         type: Sequelize.STRING,
@@ -32,6 +44,3 @@ const User = db.define('user', {
         type: Sequelize.INTEGER,
     },
 });
-
-export default User;
-

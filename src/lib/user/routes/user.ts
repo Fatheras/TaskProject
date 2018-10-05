@@ -1,9 +1,9 @@
-import { Router } from 'express';
-import { UserController } from '../controllers/user-controller';
+import { Router } from "express";
+import { UserController } from "../controllers/user-controller";
 
 class UserRouter {
 
-    public router: Router
+    public router: Router;
 
     constructor() {
         this.router = Router();
@@ -11,7 +11,7 @@ class UserRouter {
     }
 
     public routes() {
-        this.router.get('/user', UserController.getUser);
+        this.router.get("/user", UserController.getUser);
     }
 }
 

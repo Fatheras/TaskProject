@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
         "target": "es6",
+        "moduleResolution": "node",
+        "pretty": true,
         "module": "commonjs",
         "sourceMap": true,
         "outDir": "./build/src",
