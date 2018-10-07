@@ -1,6 +1,9 @@
 import Sequelize from "sequelize";
+import * as dotenv from "dotenv";
 
-const db = new Sequelize("sample", "root", "CNFYBCKFD", {
+dotenv.config();
+
+const db = new Sequelize("task_project", "root", process.env.PASSWORD, {
     host: "localhost",
     dialect: "mysql",
     pool: {

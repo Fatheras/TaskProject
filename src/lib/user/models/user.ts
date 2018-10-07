@@ -1,7 +1,8 @@
 import Sequelize from "sequelize";
 import db from "../../db/models/db";
 
-interface IUser extends Sequelize.Model<IUser> {
+export interface IUser extends Sequelize.Model<IUser> {
+    id: number;
     firstName: string;
     lastName: string;
     phone: string;
@@ -10,7 +11,11 @@ interface IUser extends Sequelize.Model<IUser> {
     updatedAt: string;
 }
 
-const User = db.define<IUser>("user", {
+export const User = db.define<IUser>("user", {
+    userId: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+    },
     firstName: {
         type: Sequelize.STRING,
         validate: {
@@ -32,5 +37,3 @@ const User = db.define<IUser>("user", {
         type: Sequelize.STRING,
     },
 });
-
-export default User;

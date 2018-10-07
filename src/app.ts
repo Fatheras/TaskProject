@@ -1,6 +1,6 @@
-import * as http from 'http';
-import * as express from 'express';
-import userRouter from './lib/user/routes/user'; 
+import * as http from "http";
+import * as express from "express";
+import taskRouter from "./lib/tasks/routes/task-router";
 
 export class Server {
 
@@ -10,15 +10,13 @@ export class Server {
         this.app = express();
 
         this.setRoutes();
-    } 
+    }
 
     private setRoutes() {
-        this.app.use('/', userRouter);
+        this.app.use("/api/v1/tasks", taskRouter);
     }
-} 
+}
 
 const server = new Server();
 
-http.createServer(server.app).listen(8080, () => {
-    console.log('listening on port 8080')
-});
+http.createServer(server.app).listen(8080);

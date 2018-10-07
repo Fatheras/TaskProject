@@ -1,32 +1,45 @@
-import User from "../../user/models/user";
+import {User, IUser} from "../../user/models/user";
 import {Task, ITask} from "../models/task";
 
 export default class TaskService {
 
-    public static addTask() {
-        return 1;
+    public static async addTask(task: ITask) {
+        return await Task.create(task);
     }
 
-    public static getTask() {
-        return 1;
+    public static async getTask(id: number) {
+        return await Task.findById(id);
     }
 
-    public static getAllTask() {
-        return 1;
+    public static async getAllTasks() {
+        return await Task.findAll();
     }
 
-    public static deleteTask() {
-        return 1;
+    public static async deleteTask(id: number) {
+        return await Task.destroy({
+            where: {
+                id,
+            },
+        });
     }
 
-    public static updateTask() {
-        return 1;
+    public static async updateTask(id: number, model: ITask) {
+        if (model) {
+            delete model.id;
+
+            await Task.update(model, {
+                where: {
+                    id,
+                },
+            });
+
+            return await this.getTask(id);
+        }
+
     }
 
     public static registerUser(task: ITask, user: IUser) {
-       
-        Task.ad(task.id)
-        return 1;
+        Task.ad(task.id);
     }
 
     public static changeStatus(task: ITask, status: string) {

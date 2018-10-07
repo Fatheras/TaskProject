@@ -2,19 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const http = require("http");
 const express = require("express");
-const user_1 = require("./lib/user/routes/user");
+const task_router_1 = require("./lib/tasks/routes/task-router");
 class Server {
     constructor() {
         this.app = express();
         this.setRoutes();
     }
     setRoutes() {
-        this.app.use('/', user_1.default);
+        this.app.use("/api/v1/tasks", task_router_1.default);
     }
 }
 exports.Server = Server;
 const server = new Server();
-http.createServer(server.app).listen(8080, () => {
-    console.log('listening on port 8080');
-});
+http.createServer(server.app).listen(8080);
 //# sourceMappingURL=app.js.map

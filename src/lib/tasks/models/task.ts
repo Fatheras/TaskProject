@@ -1,7 +1,9 @@
 import Sequelize from "sequelize";
 import db from "../../db/models/db";
+import {User} from "../../user/models/user";
 
 export interface ITask extends  Sequelize.Model<ITask>  {
+    id: number;
     name: string;
     cost: number;
     status: string;
@@ -14,6 +16,10 @@ export interface ITask extends  Sequelize.Model<ITask>  {
 }
 
 export const Task = db.define<ITask>("task", {
+    taskId: {
+        type: Sequelize.INTEGER,
+        primaryKey: true,
+    },
     name: {
         type: Sequelize.STRING,
         validate: {
@@ -22,7 +28,7 @@ export const Task = db.define<ITask>("task", {
         },
     },
     cost: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.DOUBLE,
     },
     status: {
         type: Sequelize.STRING,
@@ -34,6 +40,9 @@ export const Task = db.define<ITask>("task", {
     category: {
         type: Sequelize.STRING,
     },
+    countOfUsers: {
+        type: Sequelize.INTEGER,
+    },
     time: {
         type: Sequelize.TIME,
     },
@@ -42,5 +51,12 @@ export const Task = db.define<ITask>("task", {
     },
     owner: {
         type: Sequelize.INTEGER,
+        references: {
+            model: User,
+            key:   "userId",
+        },
     },
+},
+{
+    timestamps: false,
 });
