@@ -49,4 +49,3 @@ exports.Task = db_1.default.define("task", {
 }, {
     timestamps: false,
 });
-//# sourceMappingURL=task.js.map

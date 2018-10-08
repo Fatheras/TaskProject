@@ -3,16 +3,15 @@ import db from "../../db/models/db";
 import {User} from "../../user/models/user";
 
 export interface ITask extends  Sequelize.Model<ITask>  {
-    id: number;
+    id?: number;
     name: string;
     cost: number;
     status: string;
     category: string;
+    countOfUsers: number;
     time: string;
     description: string;
     owner: number;
-    createdAt: string;
-    updatedAt: string;
 }
 
 export const Task = db.define<ITask>("task", {

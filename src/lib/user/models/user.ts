@@ -2,13 +2,11 @@ import Sequelize from "sequelize";
 import db from "../../db/models/db";
 
 export interface IUser extends Sequelize.Model<IUser> {
-    id: number;
+    id?: number;
     firstName: string;
     lastName: string;
     phone: string;
-    address: string;
-    createdAt: string;
-    updatedAt: string;
+    email: string;
 }
 
 export const User = db.define<IUser>("user", {

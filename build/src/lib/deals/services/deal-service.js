@@ -49,4 +49,3 @@ class DealService {
     }
 }
 exports.default = DealService;
-//# sourceMappingURL=deal-service.js.map
