@@ -14,4 +14,3 @@ const db = new sequelize_1.default("task_project", "root", process.env.PASSWORD,
     },
 });
 exports.default = db;
-//# sourceMappingURL=db.js.map

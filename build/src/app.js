@@ -7,6 +7,7 @@ const task_router_1 = require("./lib/tasks/routes/task-router");
 const bodyParser = require("body-parser");
 const user_router_1 = require("./lib/user/routes/user-router");
 const deal_router_1 = require("./lib/deals/routes/deal-router");
+const logger_service_1 = require("./lib/tools/logger-service");
 class Server {
     constructor() {
         this.app = express();
@@ -23,5 +24,4 @@ class Server {
 }
 exports.Server = Server;
 const server = new Server();
-http.createServer(server.app).listen(8080);
-//# sourceMappingURL=app.js.map
+http.createServer(server.app).listen(8080, () => logger_service_1.successLog.info("Server listening"));

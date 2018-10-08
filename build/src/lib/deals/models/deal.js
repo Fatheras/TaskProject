@@ -28,4 +28,3 @@ exports.Deal = db_1.default.define("deal", {
 }, {
     timestamps: false,
 });
-//# sourceMappingURL=deal.js.map

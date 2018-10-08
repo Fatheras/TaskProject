@@ -5,6 +5,7 @@ import taskRouter from "./lib/tasks/routes/task-router";
 import * as bodyParser from "body-parser";
 import userRouter from "./lib/user/routes/user-router";
 import dealRouter from "./lib/deals/routes/deal-router";
+import {errorLog, successLog} from "./lib/tools/logger-service";
 
 export class Server {
 
@@ -29,4 +30,4 @@ export class Server {
 
 const server = new Server();
 
-http.createServer(server.app).listen(8080);
+http.createServer(server.app).listen(8080, () => successLog.info("Server listening"));

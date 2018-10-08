@@ -17,4 +17,3 @@ class DealRouter {
 }
 const dealRoutes = new DealRouter();
 exports.default = dealRoutes.router;
-//# sourceMappingURL=deal-router.js.map

@@ -28,4 +28,3 @@ exports.User = db_1.default.define("user", {
         type: sequelize_1.default.STRING,
     },
 }, { timestamps: false });
-//# sourceMappingURL=user.js.map

@@ -82,4 +82,3 @@ class DealController {
     }
 }
 exports.DealController = DealController;
-//# sourceMappingURL=deal-controller.js.map
