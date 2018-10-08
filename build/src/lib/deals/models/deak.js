@@ -42,11 +42,11 @@ exports.Task = db_1.default.define("task", {
         type: sequelize_1.default.INTEGER,
         references: {
             model: user_1.User,
-            key: "id",
+            key: "userId",
         },
         validate: { notEmpty: true },
     },
 }, {
     timestamps: false,
 });
-//# sourceMappingURL=task.js.map
+//# sourceMappingURL=deak.js.map

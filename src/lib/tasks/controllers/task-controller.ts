@@ -48,7 +48,7 @@ export class TaskController {
 
         const taskId = parseInt(req.params.id, 10);
         const model: ITask = req.body;
-        let task: IUser;
+        let task: ITask;
 
         try {
             task = await TaskService.updateTask(taskId, model);

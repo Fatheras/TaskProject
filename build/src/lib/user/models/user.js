@@ -24,8 +24,8 @@ exports.User = db_1.default.define("user", {
             len: [4, 15],
         },
     },
-    address: {
+    email: {
         type: sequelize_1.default.STRING,
     },
-});
+}, { timestamps: false });
 //# sourceMappingURL=user.js.map

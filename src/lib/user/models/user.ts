@@ -33,7 +33,8 @@ export const User = db.define<IUser>("user", {
             len: [4, 15],
         },
     },
-    address: {
+    email: {
         type: Sequelize.STRING,
     },
-});
+},
+{ timestamps: false });

@@ -1,5 +1,7 @@
 import {User, IUser} from "../../user/models/user";
 import {Task, ITask} from "../models/task";
+import { Deal } from "../../deals/models/deal";
+import DealService from "../../deals/services/deal-service";
 
 export default class TaskService {
 
@@ -36,14 +38,6 @@ export default class TaskService {
             return await this.getTask(id);
         }
 
-    }
-
-    public static registerUser(task: ITask, user: IUser) {
-        Task.ad(task.id);
-    }
-
-    public static changeStatus(task: ITask, status: string) {
-        return 1;
     }
 
 }

@@ -19,6 +19,7 @@ export const Task = db.define<ITask>("task", {
     id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
     },
     name: {
         type: Sequelize.STRING,
@@ -53,8 +54,9 @@ export const Task = db.define<ITask>("task", {
         type: Sequelize.INTEGER,
         references: {
             model: User,
-            key:   "userId",
+            key:   "id",
         },
+        validate: {notEmpty: true},
     },
 },
 {

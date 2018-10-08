@@ -47,6 +47,12 @@ class TaskService {
             }
         });
     }
+    static registerUser(task, user) {
+        task_1.Task.ad(task.id);
+    }
+    static changeStatus(task, status) {
+        return 1;
+    }
 }
 exports.default = TaskService;
 //# sourceMappingURL=task-service.js.map

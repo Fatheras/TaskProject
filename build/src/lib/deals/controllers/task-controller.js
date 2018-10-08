@@ -8,20 +8,20 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const user_service_1 = require("../services/user-service");
-class UserController {
-    static getAllUsers(req, res) {
+const deal_service_1 = require("../services/deal-service");
+class DealController {
+    static getAllDeal(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            res.status(200).send(yield user_service_1.default.getAllUsers());
+            res.status(200).send(yield deal_service_1.default.getAllDeals());
         });
     }
-    static getUser(req, res) {
+    static getDeal(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            let user;
+            let deal;
             try {
-                user = yield user_service_1.default.getUser(req.params.id);
-                if (user) {
-                    res.status(200).send(user);
+                deal = yield deal_service_1.default.getDeal(req.params.id);
+                if (deal) {
+                    res.status(200).send(deal);
                 }
                 else {
                     res.sendStatus(404);
@@ -32,23 +32,11 @@ class UserController {
             }
         });
     }
-    static addUser(req, res) {
-        return __awaiter(this, void 0, void 0, function* () {
-            let user;
-            try {
-                user = yield user_service_1.default.addUser(req.body);
-                res.status(200).send(user);
-            }
-            catch (error) {
-                res.send(error.message);
-            }
-        });
-    }
-    static deleteUser(req, res) {
+    static deleteDeal(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
             let result;
             try {
-                result = yield user_service_1.default.deleteUser(req.params.id);
+                result = yield deal_service_1.default.deleteDeal(req.params.id);
                 if (result) {
                     res.sendStatus(204);
                 }
@@ -61,15 +49,15 @@ class UserController {
             }
         });
     }
-    static updateUser(req, res) {
+    static updateTask(req, res) {
         return __awaiter(this, void 0, void 0, function* () {
-            const userId = parseInt(req.params.id, 10);
+            const dealId = parseInt(req.params.id, 10);
             const model = req.body;
-            let user;
+            let deal;
             try {
-                user = yield user_service_1.default.updateUser(userId, model);
-                if (user) {
-                    res.status(200).send(user);
+                deal = yield deal_service_1.default.updateDeal(dealId, model);
+                if (deal) {
+                    res.status(200).send(deal);
                 }
                 else {
                     res.sendStatus(404);
@@ -80,6 +68,18 @@ class UserController {
             }
         });
     }
+    static addDeal(req, res) {
+        return __awaiter(this, void 0, void 0, function* () {
+            let deal;
+            try {
+                deal = yield deal_service_1.default.addDeal(req.body);
+                res.status(200).send(deal);
+            }
+            catch (error) {
+                res.send(error.message);
+            }
+        });
+    }
 }
-exports.UserController = UserController;
-//# sourceMappingURL=user-controller.js.map
+exports.DealController = DealController;
+//# sourceMappingURL=task-controller.js.map

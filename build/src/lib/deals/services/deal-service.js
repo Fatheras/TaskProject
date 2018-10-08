@@ -8,45 +8,45 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-const task_1 = require("../models/task");
-class TaskService {
-    static addTask(task) {
+const deal_1 = require("../models/deal");
+class DealService {
+    static addDeal(deal) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield task_1.Task.create(task);
+            return yield deal_1.Deal.create(deal);
         });
     }
-    static getTask(id) {
+    static getDeal(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield task_1.Task.findById(id);
+            return yield deal_1.Deal.findById(id);
         });
     }
-    static getAllTasks() {
+    static getAllDeals() {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield task_1.Task.findAll();
+            return yield deal_1.Deal.findAll();
         });
     }
-    static deleteTask(id) {
+    static deleteDeal(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return yield task_1.Task.destroy({
+            return yield deal_1.Deal.destroy({
                 where: {
                     id,
                 },
             });
         });
     }
-    static updateTask(id, model) {
+    static updateDeal(id, model) {
         return __awaiter(this, void 0, void 0, function* () {
             if (model) {
                 delete model.id;
-                yield task_1.Task.update(model, {
+                yield deal_1.Deal.update(model, {
                     where: {
                         id,
                     },
                 });
-                return yield this.getTask(id);
+                return yield this.getDeal(id);
             }
         });
     }
 }
-exports.default = TaskService;
-//# sourceMappingURL=task-service.js.map
+exports.default = DealService;
+//# sourceMappingURL=deal-service.js.map
