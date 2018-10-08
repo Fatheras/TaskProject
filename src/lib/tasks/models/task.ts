@@ -16,7 +16,7 @@ export interface ITask extends  Sequelize.Model<ITask>  {
 }
 
 export const Task = db.define<ITask>("task", {
-    taskId: {
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
     },

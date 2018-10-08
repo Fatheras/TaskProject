@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("sequelize");
 const db_1 = require("../../db/models/db");
 exports.User = db_1.default.define("user", {
-    userId: {
+    id: {
         type: sequelize_1.default.INTEGER,
         primaryKey: true,
     },

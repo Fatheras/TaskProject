@@ -4,7 +4,7 @@ const sequelize_1 = require("sequelize");
 const db_1 = require("../../db/models/db");
 const user_1 = require("../../user/models/user");
 exports.Task = db_1.default.define("task", {
-    taskId: {
+    id: {
         type: sequelize_1.default.INTEGER,
         primaryKey: true,
     },

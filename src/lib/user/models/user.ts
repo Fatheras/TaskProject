@@ -12,7 +12,7 @@ export interface IUser extends Sequelize.Model<IUser> {
 }
 
 export const User = db.define<IUser>("user", {
-    userId: {
+    id: {
         type: Sequelize.INTEGER,
         primaryKey: true,
     },
