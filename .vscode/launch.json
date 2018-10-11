@@ -5,12 +5,18 @@
             "name": "Current TS File",
             "type": "node",
             "request": "launch",
-            "args": ["${relativeFile}"],
-            "program": "${workspaceRoot}\\build\\src\\app.js",
-            "runtimeArgs": ["--nolazy", "-r", "ts-node/register"],
-            "sourceMaps": false,
-            "cwd": "${workspaceFolder}",
-            "protocol": "inspector"
+            "args": [
+                "${workspaceRoot}//src//app.ts"
+            ],
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register"
+            ],
+            "sourceMaps": true,
+            "cwd": "${workspaceRoot}",
+            "protocol": "inspector",
+            "internalConsoleOptions": "openOnSessionStart",
         }
     ]
 }
