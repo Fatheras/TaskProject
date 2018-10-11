@@ -55,6 +55,8 @@ User.beforeCreate((user, options) => {
 
 User.isValidPassword = async (user, password) => {
     const foundUser = user;
-    const compare = await bcrypt.compare(password, foundUser.password);
+    let compare: boolean;
+
+    compare = await bcrypt.compare(password, foundUser.password);
     return compare;
 };
