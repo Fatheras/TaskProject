@@ -1,6 +1,6 @@
 import * as passport from "passport";
 import { Strategy as localStrategy } from "passport-local";
-import { User } from "../user/models/user";
+import {User} from "../user/models/user";
 import UserService from "../user/services/user-service";
 
 export default class AuthService {
@@ -27,10 +27,14 @@ export default class AuthService {
         }, async (email, password, done) => {
             try {
                 // Find the user associated with the email provided by the user
-                const user = await User.findOne({ where: email });
+                const user = await User.findOne({ where: { email } });
                 if (!user) {
                     // If the user isn"t found in the database, return a message
                     return done(null, false, { message: "User not found" });
+                }
+                const validate = await User.isValidPassword(user, password);
+                if (!validate) {
+                    return done(null, false, { message: "Wrong Password" });
                 }
                 return done(null, user, { message: "Logged in Successfully" });
             } catch (error) {

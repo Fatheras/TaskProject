@@ -22,8 +22,6 @@ class UserRouter {
         this.router.get("/:id", user_controller_1.UserController.getUser);
         this.router.delete("/:id", user_controller_1.UserController.deleteUser);
         this.router.put("/:id", user_controller_1.UserController.updateUser);
-        // tslint:disable-next-line:max-line-length
-        // this.router.post("/", UserController.addUser);
         this.router.post("/", passport.authenticate("signup", { session: false }), (req, res, next) => __awaiter(this, void 0, void 0, function* () {
             res.json({
                 message: "Signup successful",

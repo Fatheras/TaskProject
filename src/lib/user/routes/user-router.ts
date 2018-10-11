@@ -17,14 +17,13 @@ class UserRouter {
         this.router.get("/:id", UserController.getUser);
         this.router.delete("/:id", UserController.deleteUser);
         this.router.put("/:id", UserController.updateUser);
-        // tslint:disable-next-line:max-line-length
-        // this.router.post("/", UserController.addUser);
-        this.router.post("/", passport.authenticate("signup", { session: false }), async (req, res, next) => {
-            res.json({
-                message: "Signup successful",
-                user: req.user,
+        this.router.post("/", passport.authenticate("signup", { session: false }),
+            async (req, res, next) => {
+                res.json({
+                    message: "Signup successful",
+                    user: req.user,
+                });
             });
-        });
         this.router.post("/login", async (req, res, next) => {
             passport.authenticate("login", async (err, user, info) => {
                 try {

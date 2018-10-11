@@ -38,10 +38,14 @@ class AuthService {
             }, (email, password, done) => __awaiter(this, void 0, void 0, function* () {
                 try {
                     // Find the user associated with the email provided by the user
-                    const user = yield user_1.User.findOne({ where: {email} });
+                    const user = yield user_1.User.findOne({ where: { email } });
                     if (!user) {
                         // If the user isn"t found in the database, return a message
                         return done(null, false, { message: "User not found" });
+                    }
+                    const validate = yield user_1.User.isValidPassword(user, password);
+                    if (!validate) {
+                        return done(null, false, { message: "Wrong Password" });
                     }
                     return done(null, user, { message: "Logged in Successfully" });
                 }
