@@ -10,7 +10,6 @@ exports.User = db_1.default.define("user", {
     firstName: {
         type: sequelize_1.default.STRING,
         validate: {
-            notEmpty: true,
             len: [3, 20],
         },
     },
@@ -26,5 +25,10 @@ exports.User = db_1.default.define("user", {
     },
     email: {
         type: sequelize_1.default.STRING,
+        notEmpty: true,
+    },
+    password: {
+        type: sequelize_1.default.STRING,
+        notEmpty: true,
     },
 }, { timestamps: false });

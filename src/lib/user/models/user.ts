@@ -3,10 +3,11 @@ import db from "../../db/models/db";
 
 export interface IUser extends Sequelize.Model<IUser> {
     id?: number;
-    firstName: string;
-    lastName: string;
+    firstName?: string;
+    lastName?: string;
     phone: string;
     email: string;
+    password: string;
 }
 
 export const User = db.define<IUser>("user", {
@@ -17,7 +18,6 @@ export const User = db.define<IUser>("user", {
     firstName: {
         type: Sequelize.STRING,
         validate: {
-            notEmpty: true,
             len: [3, 20],
         },
     },
@@ -33,6 +33,11 @@ export const User = db.define<IUser>("user", {
     },
     email: {
         type: Sequelize.STRING,
+        notEmpty: true,
+    },
+    password: {
+        type: Sequelize.STRING,
+        notEmpty: true,
     },
 },
-{ timestamps: false });
+    { timestamps: false });
