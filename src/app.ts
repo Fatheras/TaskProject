@@ -39,4 +39,4 @@ export class Server {
 
 const server = new Server();
 
-http.createServer(server.app).listen(8080, () => successLog.info("Server listening"));
+http.createServer(server.app).listen(process.env.PORT, () => successLog.info("Server listening"));
