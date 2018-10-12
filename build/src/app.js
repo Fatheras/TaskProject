@@ -19,9 +19,8 @@ class Server {
         this.app.use(passport.initialize());
         auth_service_1.default.signUp();
         auth_service_1.default.logIn();
+        auth_service_1.default.checkAccess();
         this.setRoutes();
-        // tslint:disable-next-line:max-line-length
-        // this.app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
     }
     setRoutes() {
         this.app.use("/api/v1", this.router);
@@ -32,4 +31,4 @@ class Server {
 }
 exports.Server = Server;
 const server = new Server();
-http.createServer(server.app).listen(8080, () => logger_service_1.successLog.info("Server listening"));
+http.createServer(server.app).listen(process.env.PORT, () => logger_service_1.successLog.info("Server listening"));

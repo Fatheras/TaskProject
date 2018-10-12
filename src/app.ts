@@ -1,6 +1,5 @@
 import * as http from "http";
 import * as express from "express";
-import * as session from "express-session";
 import { Router } from "express";
 import taskRouter from "./lib/tasks/routes/task-router";
 import * as bodyParser from "body-parser";
@@ -22,12 +21,12 @@ export class Server {
         this.app.use(bodyParser.urlencoded({ extended: true }));
         this.app.use(bodyParser.json());
         this.app.use(passport.initialize());
+
         AuthService.signUp();
         AuthService.logIn();
+        AuthService.checkAccess();
 
         this.setRoutes();
-        // tslint:disable-next-line:max-line-length
-        // this.app.use(session({ secret: 'passport-tutorial', cookie: { maxAge: 60000 }, resave: false, saveUninitialized: false }));
     }
 
     private setRoutes() {
@@ -40,4 +39,4 @@ export class Server {
 
 const server = new Server();
 
-http.createServer(server.app).listen(8080, () => successLog.info("Server listening"));
+http.createServer(server.app).listen(process.env.PORT, () => successLog.info("Server listening"));
