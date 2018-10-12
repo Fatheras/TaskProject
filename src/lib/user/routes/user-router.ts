@@ -51,7 +51,7 @@ class UserRouter {
                         const token = jwt.sign({ user: body }, process.env.SECRET, {
                             expiresIn: 30,
                         });
-                        return res.json({ token });
+                        return res.json(token);
                     });
                 } catch (error) {
                     return next(error);

@@ -8,6 +8,7 @@ import dealRouter from "./lib/deals/routes/deal-router";
 import { errorLog, successLog } from "./lib/tools/logger-service";
 import passport = require("passport");
 import AuthService from "./lib/authentication/auth-service";
+import cors from "cors";
 
 export class Server {
 
@@ -15,18 +16,31 @@ export class Server {
     private router;
 
     constructor() {
-        this.app = express();
-        this.router = Router();
+        try {
 
-        this.app.use(bodyParser.urlencoded({ extended: true }));
-        this.app.use(bodyParser.json());
-        this.app.use(passport.initialize());
+            this.app = express();
+            this.router = Router();
 
-        AuthService.signUp();
-        AuthService.logIn();
-        AuthService.checkAccess();
+            this.app.use(bodyParser.urlencoded({ extended: true }));
+            this.app.use(bodyParser.json());
+            this.app.use(passport.initialize());
+            this.app.use((req, res, next) => {
+                res.header("Access-Control-Allow-Origin", "*");
+                // tslint:disable-next-line:max-line-length
+                res.setHeader("Access-Control-Allow-Headers", "Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers");
+                res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
+                next();
+            });
 
-        this.setRoutes();
+            AuthService.signUp();
+            AuthService.logIn();
+            AuthService.checkAccess();
+
+            this.setRoutes();
+        } catch (error) {
+            successLog.info(error);
+        }
+
     }
 
     private setRoutes() {
