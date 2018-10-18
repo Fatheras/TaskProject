@@ -3,19 +3,19 @@ import { Task, ITask } from "../models/task";
 export default class TaskService {
 
     public static async addTask(task: ITask) {
-        return await Task.create(task);
+        return Task.create(task);
     }
 
     public static async getTask(id: number) {
-        return await Task.findById(id);
+        return Task.findById(id);
     }
 
     public static async getAllTasks() {
-        return await Task.findAll();
+        return Task.findAll();
     }
 
     public static async deleteTask(id: number) {
-        return await Task.destroy({
+        return Task.destroy({
             where: {
                 id,
             },
@@ -32,7 +32,15 @@ export default class TaskService {
                 },
             });
 
-            return await this.getTask(id);
+            return this.getTask(id);
         }
+    }
+
+    public static async getTasksByCategory(category: string) {
+        return Task.findAll({
+            where: {
+                category,
+            },
+        });
     }
 }
