@@ -1,7 +1,8 @@
 import { Router } from "express";
 import { UserController } from "../controllers/user-controller";
 import passport = require("passport");
-import * as jwt from "jsonwebtoken";
+import { AuthController } from "../../authentication/controllers/auth-controller";
+import { handleError } from "../../tools/handleError";
 
 class UserRouter {
 
@@ -13,9 +14,8 @@ class UserRouter {
     }
 
     public routes() {
-        this.router.get("/", UserController.getAllUsers);
-        this.router.get("/:id", UserController.getUser);
-        this.router.get("/me", (req, res, next) => {
+        this.router.get("/", handleError(UserController.getAllUsers));
+        this.router.get("/me", passport.authenticate("jwt", {session: false}), (req, res) => {
 
             res.json({
                 message: "You made it to the secure route",
@@ -23,7 +23,9 @@ class UserRouter {
                 token: req.query.secret_token,
             });
         });
+        this.router.get("/:id", handleError(UserController.getUser));
 
+<<<<<<< HEAD
         this.router.delete("/:id", UserController.deleteUser);
         this.router.put("/:id", UserController.updateUser);
         this.router.post("/signup",
@@ -55,6 +57,12 @@ class UserRouter {
                 }
             })(req, res, next);
         });
+=======
+        this.router.delete("/:id", handleError(UserController.deleteUser));
+        this.router.put("/:id", handleError(UserController.updateUser));
+        this.router.post("/signup", handleError(AuthController.signUp));
+        this.router.post("/login", handleError(AuthController.signIn));
+>>>>>>> f9da944511b33d3f4e0f64a265f3e9d9f66e7e34
     }
 }
 

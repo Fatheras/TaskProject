@@ -1,6 +1,7 @@
 import Sequelize from "sequelize";
 import db from "../../db/models/db";
 import * as bcrypt from "bcrypt";
+import CustomError from "../../tools/error";
 
 export interface IUser extends Sequelize.Model<IUser> {
     id?: number;
@@ -49,7 +50,7 @@ User.beforeCreate((user: IUser, options) => {
             user.password = hash;
         })
         .catch((err) => {
-            throw new Error();
+            throw new CustomError(500);
         });
 });
 
