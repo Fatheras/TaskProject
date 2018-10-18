@@ -29,10 +29,7 @@ class UserRouter {
         this.router.post("/signup",
         passport.authenticate("signup", { session: false }),
             async (req, res, next) => {
-                res.json({
-                    message: "Signup successful",
-                    user: req.user,
-                });
+                res.send(req.user);
             });
         this.router.post("/login", async (req, res, next) => {
             passport.authenticate("login", async (err, user, info) => {
