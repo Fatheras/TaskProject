@@ -1,4 +1,4 @@
-export enum Requsts {
+export enum Requests {
     "GET",
     "POST",
     "PUT",
